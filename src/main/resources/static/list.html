@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>List Page</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+
+</head>
+<body ng-app="ListModule" ng-controller="ListController">
+	<button type="button" ng-click="downloadMenus()"> Reload </button>
+	<br/>
+	Show all: <input type="checkbox" ng-model="showAll" ng-change="downloadMenus()">
+	<br/>
+	<select class="form-control" ng-model="institution">
+		<option value=""> </option>
+		<option ng-repeat="i in institutions.data" value="{{i}}">{{i}}</option>
+	</select>
+	<br/>
+	
+	<ul>
+		<li ng-repeat="m in menus.data | filter:institution | orderBy:'mealDay':true">
+			{{m.institution}}. {{m.mealDay}}. {{m.mealType}}. {{m.mainDishes}}. {{m.sideDishes}}
+			<button type="button" ng-click="deleteMenu(m)"> Delete </button>
+		</li>
+	</ul>
+	
+<script src="js/angular.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.2.js"></script>
+<script src="js/SharedModule.js"></script>
+<script src="js/ListModule.js"></script>
+</body>
+</html>

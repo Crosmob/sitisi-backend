@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Backup-Restore</title>
+</head>
+<body>
+	<div>
+		Backup:
+		<br/>
+		<a href="backup/getBackup"> Download backup...</a>
+	</div>
+	<br/>
+	Restore:
+	<br/>
+	<form method="POST" enctype="multipart/form-data" action="backup/putBackup">
+		File to upload:
+		<input type="file" name="file"/>
+		<br />
+		<input type="submit" value="Upload"/>
+	</form>
+</body>
+</html>

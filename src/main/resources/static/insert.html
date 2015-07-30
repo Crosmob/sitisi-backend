@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert Page</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+
+</head>
+<body ng-app="InsertModule" ng-controller="InsertController">
+	<div class="row">
+		<div class="col-sm-12">
+			<label>Institution:</label>
+			<select ng-required="true" class="form-control" ng-model="institution" ng-options="i for i in institutions.data"></select>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<label>Date:</label>
+			<p class="input-group">
+				<input type="text" ng-required="true" class="form-control" ng-click="openDatePicker($event)" datepicker-popup="yyyy/MM/dd" ng-model="datePickerModel" is-open="datePickerOpened" show-button-bar="False" />
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"> <i class="glyphicon glyphicon-calendar"></i> </button>
+				</span>
+			</p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<label>Type:</label>
+			<select ng-required="true" class="form-control" ng-model="mealType" ng-options="i for i in mealTypes.data"></select>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<label>Main Dishes:</label>
+			<input type="text" ng-required="true" class="form-control" ng-model="mainDishes" typeahead="i for i in oldMainDishes.data | filter:$viewValue" typeahead-loading="loadingMainDishes">
+		    <i ng-show="loadingMainDishes" class="glyphicon glyphicon-refresh"></i>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<label>Side dishes:</label>
+			<input type="text" ng-required="true" class="form-control" ng-model="sideDishes" typeahead="i for i in oldSideDishes.data | filter:$viewValue" typeahead-loading="loadingSideDishes">
+		    <i ng-show="loadingSideDishes" class="glyphicon glyphicon-refresh"></i>
+		</div>
+	</div>
+	
+	<button type="button" ng-click="addMenu()"> Insert </button>
+	
+<script src="js/angular.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.2.js"></script>
+<script src="js/SharedModule.js"></script>
+<script src="js/InsertModule.js"></script>
+</body>
+</html>
